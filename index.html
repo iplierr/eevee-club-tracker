@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Club Tracker</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: { comfortaa: ['Comfortaa', 'cursive'] },
+          colors: {
+            blush: '#fff0f4', rose: '#f6b9c6', cocoa: '#704b40', eevee: '#edd9b2', lavender: '#dfd5fa', sky: '#cceaf4'
+          },
+          boxShadow: { cozy: '0 12px 32px rgba(112, 75, 64, 0.10)' },
+          keyframes: { float: { '0%,100%': { transform: 'translateY(0)' }, '50%': { transform: 'translateY(-10px)' } } },
+          animation: { float: 'float 4s ease-in-out infinite' }
+        }
+      }
+    }
+  </script>
+  <style>
+    html { scroll-behavior: smooth; }
+    body { background: #fff8f7; }
+    .sparkle::before, .sparkle::after { content: '✦'; position: absolute; color: #fff; opacity: .8; }
+    .sparkle::before { top: 18%; left: 13%; font-size: 22px; }.sparkle::after { bottom: 17%; right: 15%; font-size: 17px; }
+    .nav-link::after { content: ''; display: block; height: 2px; width: 0; background: #c96d87; transition: width .2s ease; margin: 5px auto 0; }
+    .nav-link:hover::after { width: 70%; }
+    .eevee-sprite { background-image: url('./eeveelutions.jpg'); background-size: 300% 300%; background-repeat: no-repeat; }
+    .sprite-vaporeon { background-position: 0% 0%; }.sprite-jolteon { background-position: 50% 0%; }.sprite-flareon { background-position: 100% 0%; }
+    .sprite-espeon { background-position: 0% 50%; }.sprite-eevee { background-position: 50% 50%; }.sprite-umbreon { background-position: 100% 50%; }
+    .sprite-leafeon { background-position: 0% 100%; }.sprite-glaceon { background-position: 50% 100%; }.sprite-sylveon { background-position: 100% 100%; }
+    .pokeball { --ball: #f6b9c6; position: relative; overflow: hidden; background: linear-gradient(to bottom, var(--ball) 0 45%, #704b40 45% 53%, #fff 53% 100%); }
+    .pokeball::after { content: ''; position: absolute; left: 50%; top: 50%; height: 18px; width: 18px; transform: translate(-50%,-50%); border: 4px solid #704b40; border-radius: 999px; background: #fff; box-shadow: 0 0 0 2px rgba(255,255,255,.5); }
+  </style>
+</head>
+<body class="font-comfortaa text-cocoa selection:bg-rose/40">
+  <nav class="fixed inset-x-0 top-0 z-50 border-b border-rose/20 bg-blush/90 shadow-sm backdrop-blur-md">
+    <div class="mx-auto flex h-20 max-w-7xl items-center justify-between px-5 lg:px-8">
+      <a href="#home" class="flex items-center gap-3 text-base font-bold text-cocoa">
+        <span class="grid h-11 w-11 place-items-center rounded-2xl bg-lavender text-2xl shadow-sm" aria-label="Sylveon logo placeholder">♡</span>
+        <span class="hidden sm:inline">Club Tracker</span>
+      </a>
+      <div class="hidden items-center gap-7 text-xs font-bold md:flex">
+        <a class="nav-link" href="#home">Home</a><a class="nav-link" href="#calendar">Calendar</a><a class="nav-link" href="#profile">My Profile</a><a class="nav-link" href="#eboard">E-Board</a>
+      </div>
+      <button id="navLumaButton" class="rounded-2xl bg-white px-4 py-3 text-xs font-bold text-cocoa shadow-sm transition hover:-translate-y-0.5 hover:shadow">Link FIU Luma ↗</button>
+    </div>
+  </nav>
+
+  <main>
+    <section id="home" class="relative overflow-hidden px-5 pb-16 pt-32 lg:px-8 lg:pb-24">
+      <div class="absolute -left-16 top-28 h-56 w-56 rounded-full bg-sky/30 blur-3xl"></div><div class="absolute right-0 top-16 h-72 w-72 rounded-full bg-lavender/35 blur-3xl"></div>
+      <div class="relative mx-auto grid max-w-7xl items-center gap-12 lg:grid-cols-[1.05fr_.95fr]">
+        <div>
+          <p class="mb-5 inline-flex rounded-full bg-white px-4 py-2 text-xs font-bold text-[#b06a81] shadow-sm">✿ Your student club</p>
+          <h1 class="max-w-2xl text-4xl font-bold leading-tight sm:text-5xl lg:text-6xl">Evolution in Progress:<br /><span class="text-[#c96d87]">Welcome to Club Tracker!</span></h1>
+          <p class="mt-6 max-w-xl text-sm leading-7 text-cocoa/70">A warm, ready-to-customize home for your club’s events, announcements, and student community.</p>
+          <div class="mt-8 flex flex-wrap gap-4"><a href="#calendar" class="rounded-2xl bg-eevee px-6 py-4 text-sm font-bold shadow-cozy transition hover:-translate-y-1 hover:shadow-lg">Explore club events ✦</a><button id="heroLumaButton" class="rounded-2xl bg-white px-6 py-4 text-sm font-bold shadow-sm transition hover:-translate-y-1">Link FIU Luma</button></div>
+          <div class="mt-10 flex items-center gap-3 text-xs text-cocoa/65"><div class="flex -space-x-2"><span class="grid h-8 w-8 place-items-center rounded-full border-2 border-white bg-lavender">✦</span><span class="grid h-8 w-8 place-items-center rounded-full border-2 border-white bg-sky">☼</span><span class="grid h-8 w-8 place-items-center rounded-full border-2 border-white bg-rose">♡</span></div><span>Your club community will appear here.</span></div>
+        </div>
+        <div class="sparkle relative mx-auto flex h-[350px] w-full max-w-[490px] items-center justify-center overflow-hidden rounded-[3rem] bg-gradient-to-br from-[#f3c9d4] via-[#dccff3] to-[#c7e9f2] shadow-cozy sm:h-[420px]">
+          <div class="absolute h-64 w-64 rounded-full bg-white/25"></div>
+          <div class="z-10 text-center animation-float animate-float"><div class="eevee-sprite sprite-eevee mx-auto h-44 w-44 drop-shadow-lg"></div><p class="mt-1 rounded-full bg-white/70 px-4 py-2 text-xs font-bold text-cocoa">Eevee & friends banner</p></div>
+          <span class="absolute bottom-7 left-8 rounded-full bg-white/75 px-3 py-2 text-[10px] font-bold">Your club story begins here.</span>
+        </div>
+      </div>
+    </section>
+
+    <section id="announcements" class="px-5 py-10 lg:px-8"><div class="mx-auto max-w-7xl">
+      <div class="mb-6 flex items-end justify-between"><div><p class="text-xs font-bold uppercase tracking-[.18em] text-[#bc758d]">Club news</p><h2 class="mt-2 text-2xl font-bold">Announcements</h2></div><a href="#calendar" class="text-xs font-bold text-[#b06a81]">View calendar →</a></div>
+      <div class="flex min-h-48 flex-col items-center justify-center rounded-[2rem] border-2 border-dashed border-rose/40 bg-white p-8 text-center shadow-sm"><div class="eevee-sprite sprite-glaceon h-16 w-16 rounded-3xl bg-sky/60"></div><h3 class="mt-4 text-base font-bold">No announcements yet!</h3><p class="mt-2 max-w-md text-xs leading-6 text-cocoa/60">This is ready for your club leaders to share updates, reminders, and good news.</p></div>
+    </div></section>
+
+    <section id="calendar" class="px-5 py-20 lg:px-8"><div class="mx-auto max-w-7xl rounded-[2.5rem] bg-[#fff1e9] p-6 sm:p-10">
+      <div class="mb-8 flex flex-wrap items-end justify-between gap-5"><div><p class="text-xs font-bold uppercase tracking-[.18em] text-[#bc758d]">FIU club events</p><h2 class="mt-2 text-3xl font-bold">Our evolution calendar</h2><p class="mt-3 max-w-xl text-xs leading-6 text-cocoa/65">Link your FIU Luma to keep registrations in one sweet little place.</p></div><button id="calendarLumaButton" class="rounded-2xl bg-white px-5 py-3 text-xs font-bold shadow-sm transition hover:-translate-y-1 hover:shadow-cozy"><span id="lumaStatusDot">○</span> <span id="lumaStatus">Link FIU Luma</span></button></div>
+      <div class="grid gap-7 lg:grid-cols-[1.35fr_.65fr]">
+        <div class="overflow-hidden rounded-3xl bg-white p-4 shadow-sm sm:p-6"><div class="mb-5 flex items-center justify-between"><button class="month-control grid h-9 w-9 place-items-center rounded-xl bg-blush text-sm transition hover:scale-110" data-direction="-1">←</button><h3 id="monthLabel" class="text-sm font-bold"></h3><button class="month-control grid h-9 w-9 place-items-center rounded-xl bg-blush text-sm transition hover:scale-110" data-direction="1">→</button></div><div class="grid grid-cols-7 gap-1 text-center text-[9px] font-bold text-cocoa/45"><span>Sun</span><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span></div><div id="calendarGrid" class="mt-2 grid grid-cols-7 gap-1"></div></div>
+        <aside class="rounded-3xl bg-white p-6 shadow-sm"><p class="text-[10px] font-bold uppercase tracking-[.15em] text-[#bc758d]">Event details</p><div id="eventPanel" class="mt-4 flex min-h-56 flex-col items-center justify-center text-center"><div class="eevee-sprite sprite-eevee h-20 w-20 rounded-3xl bg-eevee/60"></div><h3 class="mt-4 text-base font-bold">No event selected</h3><p class="mt-2 max-w-[220px] text-xs leading-6 text-cocoa/60">New club gatherings will appear here when they are added.</p></div></aside>
+      </div>
+      <div class="mt-8 rounded-3xl border border-dashed border-rose/50 bg-white/65 px-6 py-8 text-center"><div class="mx-auto grid h-12 w-12 place-items-center rounded-2xl bg-blush text-xl">✦</div><h3 class="mt-4 text-sm font-bold">No upcoming events scheduled yet!</h3><p class="mt-2 text-xs text-cocoa/60">This calendar is ready for your club’s next adventure.</p></div>
+    </div></section>
+
+    <section id="timeline" class="px-5 py-10 lg:px-8"><div class="mx-auto max-w-7xl rounded-[2.5rem] bg-[#f3ecfb] p-6 sm:p-10"><p class="text-xs font-bold uppercase tracking-[.18em] text-[#8b73ad]">Meeting timeline</p><h2 class="mt-2 text-3xl font-bold">Our evolving story</h2><div class="mt-7 flex min-h-48 flex-col items-center justify-center rounded-3xl border-2 border-dashed border-white bg-white/55 p-8 text-center"><div class="eevee-sprite sprite-sylveon h-20 w-20 rounded-3xl bg-[#f8d5e4]"></div><h3 class="mt-4 text-base font-bold">No meetings to look back on yet!</h3><p class="mt-2 max-w-md text-xs leading-6 text-cocoa/60">When your club adds a meeting, workshop, or agenda, it will bloom here as part of the timeline.</p></div></div></section>
+
+    <section id="profile" class="px-5 py-12 lg:px-8"><div class="mx-auto max-w-7xl overflow-hidden rounded-[2.5rem] bg-gradient-to-br from-[#f4eafa] via-white to-[#e7f6fa] p-6 shadow-cozy sm:p-10">
+      <div class="mb-8 flex flex-wrap items-end justify-between gap-4"><div><p class="text-xs font-bold uppercase tracking-[.18em] text-[#8b73ad]">Student account</p><h2 class="mt-2 text-3xl font-bold">Your trainer profile</h2><p class="mt-3 max-w-xl text-xs leading-6 text-cocoa/65">Save your career details once, so eligible club events can prefill them when you register.</p></div><span id="profileStatus" class="rounded-full bg-white px-4 py-3 text-[10px] font-bold shadow-sm">Profile not completed</span></div>
+      <div class="grid gap-7 lg:grid-cols-[1fr_1.1fr]"><div><label class="mb-2 block text-xs font-bold">Resume</label><input id="resumeInput" class="hidden" type="file" accept=".pdf,.doc,.docx" /><button id="resumeDropzone" type="button" class="group flex min-h-48 w-full flex-col items-center justify-center rounded-[2rem] border-2 border-dashed border-[#cbaed9] bg-white/80 px-6 text-center transition duration-300 hover:-translate-y-1 hover:border-[#a980b9] hover:shadow-cozy focus:outline-none focus:ring-4 focus:ring-lavender/70"><span class="grid h-14 w-14 place-items-center rounded-2xl bg-lavender text-2xl transition group-hover:scale-110">⇧</span><span id="resumeLabel" class="mt-4 text-xs font-bold">Drop your resume here</span><span class="mt-2 text-[10px] text-cocoa/55">PDF, DOC, or DOCX · local demo only</span></button></div>
+        <div class="rounded-[2rem] bg-white/80 p-5 sm:p-7"><label for="linkedinInput" class="text-xs font-bold">LinkedIn profile</label><input id="linkedinInput" type="url" placeholder="https://linkedin.com/in/your-name" class="mt-3 w-full rounded-2xl border border-lavender bg-white px-4 py-4 text-xs outline-none transition focus:-translate-y-0.5 focus:border-[#a980b9] focus:shadow-[0_0_0_4px_rgba(223,213,250,.7)]" /><p class="mt-3 text-[10px] leading-5 text-cocoa/55">Only events marked “resume needed” will request these saved details.</p><button id="saveProfile" class="mt-6 rounded-2xl bg-lavender px-5 py-4 text-xs font-bold transition hover:-translate-y-1 hover:shadow-cozy">Save career profile ✦</button></div></div>
+    </div></section>
+
+    <section id="eboard" class="px-5 pb-24 lg:px-8"><div class="mx-auto max-w-7xl"><div class="mb-8"><p class="text-xs font-bold uppercase tracking-[.18em] text-[#bc758d]">Club leadership</p><h2 class="mt-2 text-3xl font-bold">E-board directory</h2><p class="mt-3 text-xs text-cocoa/65">Add your club’s officers and contact details here when they are ready.</p></div>
+      <div class="flex min-h-64 flex-col items-center justify-center rounded-[2rem] border-2 border-dashed border-rose/40 bg-white p-8 text-center shadow-cozy"><div class="pokeball h-16 w-16 rounded-full" style="--ball:#b8a0e8"></div><h3 class="mt-5 text-base font-bold">No E-board members listed yet!</h3><p class="mt-2 max-w-md text-xs leading-6 text-cocoa/60">This directory is ready for your club to add officer roles, favorite Eeveelutions, and ways for students to get in touch.</p></div>
+    </div></section>
+  </main>
+  <footer class="border-t border-rose/20 bg-blush px-5 py-8 text-center text-xs text-cocoa/60">Made with soft paws for FIU student clubs · <a class="font-bold text-[#b06a81]" href="#home">Back to top ↑</a></footer>
+
+  <div id="modal" class="fixed inset-0 z-[60] hidden items-center justify-center bg-cocoa/30 px-5 backdrop-blur-sm"><div class="w-full max-w-md rounded-[2rem] bg-white p-7 shadow-2xl"><button id="closeModal" class="float-right grid h-8 w-8 place-items-center rounded-xl bg-blush text-sm">×</button><div id="modalContent"></div></div></div>
+  <script>
+    const events = [];
+    let currentMonth = new Date().getMonth(), currentYear = new Date().getFullYear(), selectedEvent = null;
+    const modal = document.getElementById('modal'), modalContent = document.getElementById('modalContent');
+    function renderCalendar() {
+      document.getElementById('monthLabel').textContent = new Date(currentYear, currentMonth).toLocaleDateString('en-US', { month: 'long', year: 'numeric' });
+      const grid = document.getElementById('calendarGrid'), firstDay = new Date(currentYear, currentMonth, 1).getDay(), days = new Date(currentYear, currentMonth + 1, 0).getDate();
+      grid.innerHTML = Array.from({length: firstDay}, () => '<span></span>').join('') + Array.from({length: days}, (_, i) => { const day = i + 1, event = currentMonth === 9 && events.find(e => e.day === day); return `<button ${event ? `data-day="${day}"` : ''} class="min-h-11 rounded-xl p-1 text-center text-[10px] font-bold transition ${event ? 'bg-blush text-[#b06a81] hover:-translate-y-1 hover:shadow-sm' : 'hover:bg-blush/50'}"><span>${day}</span>${event ? `<span class="mx-auto mt-1 block h-1.5 w-1.5 rounded-full bg-[#c96d87]"></span>` : ''}</button>`; }).join('');
+      grid.querySelectorAll('[data-day]').forEach(button => button.onclick = () => selectEvent(events.find(e => e.day === +button.dataset.day)));
+    }
+    function selectEvent(event) { selectedEvent = event; document.getElementById('eventPanel').innerHTML = `<div class="eevee-sprite ${event.sprite} h-16 w-16 rounded-2xl ${event.color}"></div><h3 class="mt-4 text-lg font-bold">${event.name}</h3><p class="mt-2 text-xs leading-6 text-cocoa/65">Wed, October ${event.day} · ${event.time}<br />${event.place}</p>${event.requiresProfile ? '<p class="mt-3 rounded-xl bg-blush px-3 py-2 text-[10px] font-bold text-[#b06a81]">♡ Resume + LinkedIn required</p>' : ''}<button data-register="${event.name}" class="register-button mt-5 w-full rounded-2xl bg-eevee px-4 py-4 text-xs font-bold transition hover:-translate-y-1 hover:shadow-cozy">Register for this event ✦</button>`; bindRegisters(); }
+    function openModal(html) { modalContent.innerHTML = html; modal.classList.remove('hidden'); modal.classList.add('flex'); }
+    function closeModal() { modal.classList.add('hidden'); modal.classList.remove('flex'); }
+    function openLuma(onConnected) { openModal(`<p class="text-xs font-bold uppercase tracking-[.16em] text-[#bc758d]">FIU student access</p><h2 class="mt-2 text-2xl font-bold">Link your Luma</h2><p class="mt-3 text-xs leading-6 text-cocoa/65">Connect your FIU Luma profile to keep your club registrations together. This front-end demo stores the connection state only in this browser.</p><label class="mt-5 block text-[10px] font-bold">FIU email</label><input id="lumaEmail" type="email" placeholder="panther@fiu.edu" class="mt-2 w-full rounded-2xl border border-rose/30 bg-blush/40 px-4 py-3 text-xs outline-none focus:border-[#c96d87]" /><button id="confirmLuma" class="mt-4 w-full rounded-2xl bg-eevee px-4 py-4 text-xs font-bold transition hover:-translate-y-1 hover:shadow-cozy">Connect FIU Luma ✦</button>`); document.getElementById('confirmLuma').onclick = () => { const email = document.getElementById('lumaEmail').value; if (!email.endsWith('@fiu.edu')) return alert('Please use your FIU email address.'); localStorage.setItem('fiuLumaLinked', email); updateLuma(); closeModal(); if (onConnected) onConnected(); }; }
+    function register(name) { const linked = localStorage.getItem('fiuLumaLinked'), event = events.find(item => item.name === name), profile = JSON.parse(localStorage.getItem('clubProfile') || '{}'); if (!linked) { openModal(`<p class="text-xs font-bold uppercase tracking-[.16em] text-[#bc758d]">One quick step</p><h2 class="mt-2 text-2xl font-bold">Link Luma to register</h2><p class="mt-3 text-xs leading-6 text-cocoa/65">Connect your FIU Luma profile first, then we’ll save your place for <b>${name}</b>.</p><button id="linkThenRegister" class="mt-5 w-full rounded-2xl bg-eevee px-4 py-4 text-xs font-bold">Link FIU Luma</button>`); document.getElementById('linkThenRegister').onclick = () => openLuma(() => register(name)); return; } if (event && event.requiresProfile && (!profile.resumeName || !profile.linkedin)) { openModal(`<p class="text-xs font-bold uppercase tracking-[.16em] text-[#bc758d]">Career details needed</p><h2 class="mt-2 text-2xl font-bold">Complete your profile</h2><p class="mt-3 text-xs leading-6 text-cocoa/65"><b>${name}</b> asks for a resume and LinkedIn profile. Save them once in your trainer profile to prefill future registrations.</p><button id="goToProfile" class="mt-5 w-full rounded-2xl bg-lavender px-4 py-4 text-xs font-bold">Open my profile</button>`); document.getElementById('goToProfile').onclick = () => { closeModal(); document.getElementById('profile').scrollIntoView({behavior:'smooth'}); }; return; } const registered = JSON.parse(localStorage.getItem('registeredEvents') || '[]'); if (!registered.includes(name)) { registered.push(name); localStorage.setItem('registeredEvents', JSON.stringify(registered)); } openModal(`<div class="grid h-14 w-14 place-items-center rounded-2xl bg-lavender text-2xl">✦</div><h2 class="mt-4 text-2xl font-bold">You’re on the list!</h2><p class="mt-3 text-xs leading-6 text-cocoa/65">Your registration for <b>${name}</b> is saved in this dashboard demo${event && event.requiresProfile ? ' with your saved career details' : ''}. See you there, trainer!</p><button id="doneButton" class="mt-5 w-full rounded-2xl bg-eevee px-4 py-4 text-xs font-bold">Lovely, thank you!</button>`); document.getElementById('doneButton').onclick = closeModal; }
+    function bindRegisters() { document.querySelectorAll('.register-button').forEach(button => button.onclick = () => register(button.dataset.register)); }
+    function updateLuma() { const email = localStorage.getItem('fiuLumaLinked'), label = document.getElementById('lumaStatus'), dot = document.getElementById('lumaStatusDot'); if (email) { label.textContent = 'Luma linked'; dot.textContent = '●'; } }
+    function updateProfile() { const profile = JSON.parse(localStorage.getItem('clubProfile') || '{}'); if (profile.linkedin) document.getElementById('linkedinInput').value = profile.linkedin; if (profile.resumeName) document.getElementById('resumeLabel').textContent = `Ready: ${profile.resumeName}`; document.getElementById('profileStatus').textContent = profile.resumeName && profile.linkedin ? '✦ Career profile saved' : 'Profile not completed'; }
+    document.querySelectorAll('#navLumaButton, #heroLumaButton, #calendarLumaButton').forEach(button => button.onclick = openLuma);
+    document.querySelectorAll('.event-chip').forEach(button => button.onclick = () => selectEvent(events.find(e => e.name === button.dataset.event)));
+    document.querySelectorAll('.month-control').forEach(button => button.onclick = () => { currentMonth += +button.dataset.direction; if (currentMonth < 0) { currentMonth = 11; currentYear--; } if (currentMonth > 11) { currentMonth = 0; currentYear++; } renderCalendar(); });
+    const resumeInput = document.getElementById('resumeInput'), resumeDropzone = document.getElementById('resumeDropzone');
+    resumeDropzone.onclick = () => resumeInput.click(); resumeDropzone.ondragover = event => { event.preventDefault(); resumeDropzone.classList.add('border-[#a980b9]', 'bg-lavender/30'); }; resumeDropzone.ondragleave = () => resumeDropzone.classList.remove('border-[#a980b9]', 'bg-lavender/30'); resumeDropzone.ondrop = event => { event.preventDefault(); resumeDropzone.classList.remove('border-[#a980b9]', 'bg-lavender/30'); if (event.dataTransfer.files[0]) { resumeInput.files = event.dataTransfer.files; document.getElementById('resumeLabel').textContent = `Ready: ${event.dataTransfer.files[0].name}`; } }; resumeInput.onchange = () => { if (resumeInput.files[0]) document.getElementById('resumeLabel').textContent = `Ready: ${resumeInput.files[0].name}`; };
+    document.getElementById('saveProfile').onclick = () => { const linkedin = document.getElementById('linkedinInput').value.trim(), file = resumeInput.files[0], existing = JSON.parse(localStorage.getItem('clubProfile') || '{}'); if (!linkedin || (!file && !existing.resumeName)) return alert('Please add both a LinkedIn URL and a resume file.'); localStorage.setItem('clubProfile', JSON.stringify({ linkedin, resumeName: file ? file.name : existing.resumeName })); updateProfile(); };
+    document.getElementById('closeModal').onclick = closeModal; modal.onclick = event => { if (event.target === modal) closeModal(); }; bindRegisters(); renderCalendar(); updateLuma(); updateProfile();
+  </script>
+</body>
+</html>
